@@ -1,1 +1,1 @@
-* the  work has been moved to **crypto-arbitrager**](https://github.com/philsong/crypto-arbitrager)
+* the  project has been moved to NEW [**crypto-arbitrager**](https://github.com/philsong/crypto-arbitrager)
