@@ -90,6 +90,7 @@ class PrivatePaymium(Market):
             self.usd_balance = self.fc.convert(self.eur_balance, "EUR", "USD")
             self.cny_balance = self.fc.convert(self.eur_balance, "EUR", "CNY")
 
+
 if __name__ == "__main__":
     market = PrivatePaymium()
     market.get_info()

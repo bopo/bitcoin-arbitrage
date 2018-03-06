@@ -32,6 +32,7 @@ class BtceUSD(Market):
         asks = self.sort_and_format(depth['asks'], False)
         return {'asks': asks, 'bids': bids}
 
+
 if __name__ == "__main__":
     market = BtceUSD()
     print((market.get_ticker()))

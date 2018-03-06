@@ -15,6 +15,7 @@ import logging
 import lib.broker_api as exchange_api
 import traceback
 
+
 class PrivateBrokerCNY(Market):
     def __init__(self):
         super().__init__()
@@ -24,7 +25,7 @@ class PrivateBrokerCNY(Market):
         self.get_info()
         self.client_id = 0
         self.filename = "broker-clientid.json"
-        
+
         try:
             self.load()
         except IOError:
@@ -45,16 +46,16 @@ class PrivateBrokerCNY(Market):
             self.client_id += 1
             client_id = self.client_id
             self.save()
-        
+
         exchange_api.exchange_buy(client_id, amount, price)
- 
+
     def _sell(self, amount, price, client_id=None):
         """Create a sell limit order"""
         if not client_id:
-            self.client_id+=1
+            self.client_id += 1
             client_id = self.client_id
             self.save()
-        
+
         exchange_api.exchange_sell(client_id, amount, price)
 
     def get_info(self):
@@ -75,5 +76,5 @@ class PrivateBrokerCNY(Market):
             for account in accounts:
                 self.btc_balance += account.available_btc
                 self.cny_balance += account.available_cny
-                self.btc_frozen +=  account.frozen_cny
-                self.cny_frozen +=  account.frozen_btc
+                self.btc_frozen += account.frozen_cny
+                self.cny_frozen += account.frozen_btc

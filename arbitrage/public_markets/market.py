@@ -11,6 +11,7 @@ import traceback
 import config
 import threading
 
+
 class Market(object):
     def __init__(self, currency):
         self.name = self.__class__.__name__
@@ -28,7 +29,7 @@ class Market(object):
         timediff = time.time() - self.depth_updated
         if timediff > self.update_rate:
             self.ask_update_depth()
-            
+
         timediff = time.time() - self.depth_updated
         if timediff > config.market_expiration_time:
             logging.warn('Market: %s order book is expired' % self.name)
@@ -41,11 +42,12 @@ class Market(object):
             return
         for direction in ("asks", "bids"):
             for order in self.depth[direction]:
-                order["price"] = self.fc.convert(order["price"], self.currency, "CNY")
+                order["price"] = self.fc.convert(
+                    order["price"], self.currency, "CNY")
 
     def start_websocket_depth(self):
         if config.SUPPORT_WEBSOCKET:
-            t = threading.Thread(target = self.websocket_depth)
+            t = threading.Thread(target=self.websocket_depth)
             t.start()
 
     def websocket_depth(self):
@@ -61,13 +63,14 @@ class Market(object):
             depth = data[1]
 
             logging.debug("depth coming: %s", depth['market'])
-            self.depth_updated = int(depth['timestamp']/1000)
+            self.depth_updated = int(depth['timestamp'] / 1000)
             self.depth = self.format_depth(depth)
-        
+
         def on_connect():
             logging.info('[Connected]')
 
-            socketIO.emit('land', {'app': 'haobtcnotify', 'events':[self.event]});
+            socketIO.emit(
+                'land', {'app': 'haobtcnotify', 'events': [self.event]})
 
         with SocketIO(config.WEBSOCKET_HOST, port=config.WEBSOCKET_PORT) as socketIO:
 
@@ -75,7 +78,7 @@ class Market(object):
             socketIO.on('message', on_message)
 
             socketIO.wait()
-    
+
     def ask_update_depth(self):
         try:
             self.update_depth()
@@ -99,7 +102,7 @@ class Market(object):
                    'bid': depth['bids'][0]}
         return res
 
-    ## Abstract methods
+    # Abstract methods
     def update_depth(self):
         pass
 

@@ -6,6 +6,7 @@ import urllib.parse
 import json
 from .market import Market
 
+
 class Huobi(Market):
     def __init__(self, currency, code):
         super().__init__(currency)
@@ -23,5 +24,3 @@ class Huobi(Market):
         res = urllib.request.urlopen(req)
         depth = json.loads(res.read().decode('utf8'))
         self.depth = self.format_depth(depth)
-
-

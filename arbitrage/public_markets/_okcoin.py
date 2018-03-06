@@ -4,6 +4,7 @@ import urllib.parse
 import json
 from .market import Market
 
+
 class OKCoin(Market):
     def __init__(self, currency, code):
         super().__init__(currency)

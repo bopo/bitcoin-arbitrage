@@ -22,4 +22,3 @@ class BitfinexUSD(Market):
         except Exception:
             logging.error("%s - Can't parse json: %s" % (self.name, jsonstr))
         self.depth = self.format_depth(depth)
-

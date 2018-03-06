@@ -29,6 +29,7 @@ class CampBXUSD(Market):
         asks = self.sort_and_format(depth['Asks'], False)
         return {'asks': asks, 'bids': bids}
 
+
 if __name__ == "__main__":
     market = CampBXUSD()
     print((market.get_ticker()))

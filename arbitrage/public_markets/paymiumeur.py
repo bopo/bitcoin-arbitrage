@@ -18,6 +18,7 @@ class PaymiumEUR(Market):
         depth = json.loads(res.read().decode('utf8'))
         self.depth = self.format_depth(depth)
 
+
 if __name__ == "__main__":
     market = PaymiumEUR()
     print((market.get_ticker()))

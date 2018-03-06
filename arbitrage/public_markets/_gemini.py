@@ -4,6 +4,7 @@ import urllib.parse
 import json
 from .market import Market
 
+
 class Gemini(Market):
     def __init__(self, currency, symbol):
         super().__init__(currency)
@@ -19,4 +20,3 @@ class Gemini(Market):
         res = urllib.request.urlopen(req)
         depth = json.loads(res.read().decode('utf8'))
         self.depth = self.format_depth(depth)
-
