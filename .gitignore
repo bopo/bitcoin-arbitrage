@@ -56,5 +56,5 @@ download.sh
 stata/
 marketmaker.py
 hedgebot.py
-
+.cache
 
