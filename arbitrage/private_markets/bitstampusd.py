@@ -32,7 +32,7 @@ class PrivateBitstampUSD(Market):
             'User-Agent': 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'
         }
         if extra_headers is not None:
-            for k, v in extra_headers.items():
+            for k, v in list(extra_headers.items()):
                 headers[k] = v
 
         params['user'] = self.username

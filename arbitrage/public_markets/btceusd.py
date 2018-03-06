@@ -34,4 +34,4 @@ class BtceUSD(Market):
 
 if __name__ == "__main__":
     market = BtceUSD()
-    print(market.get_ticker())
+    print((market.get_ticker()))

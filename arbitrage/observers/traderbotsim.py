@@ -99,6 +99,6 @@ class TraderBotSim(TraderBot):
 
 if __name__ == "__main__":
     t = TraderBotSim()
-    print("Total BTC: %f" % t.total_btc_balance())
-    print("Total CNY: %f" % t.total_cny_balance())
-    print("Total USD: %f" % t.total_usd_balance())
+    print(("Total BTC: %f" % t.total_btc_balance()))
+    print(("Total CNY: %f" % t.total_cny_balance()))
+    print(("Total USD: %f" % t.total_usd_balance()))

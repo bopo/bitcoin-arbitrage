@@ -31,4 +31,4 @@ class CampBXUSD(Market):
 
 if __name__ == "__main__":
     market = CampBXUSD()
-    print(market.get_ticker())
+    print((market.get_ticker()))

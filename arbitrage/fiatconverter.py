@@ -77,10 +77,10 @@ class FiatConverter:
 
 if __name__ == "__main__":
     fc = FiatConverter()
-    print(fc.convert(12., "USD", "EUR"))
-    print(fc.convert(12., "EUR", "USD"))
-    print(fc.convert(1., "USD", "CNY"))
-    print(fc.convert(1., "CNY", "USD"))
-    print(fc.convert(1., "EUR", "CNY"))
+    print((fc.convert(12., "USD", "EUR")))
+    print((fc.convert(12., "EUR", "USD")))
+    print((fc.convert(1., "USD", "CNY")))
+    print((fc.convert(1., "CNY", "USD")))
+    print((fc.convert(1., "EUR", "CNY")))
 
-    print(fc.rates)
+    print((fc.rates))

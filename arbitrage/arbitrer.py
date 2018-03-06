@@ -3,9 +3,10 @@
 # Copyright (C) 2013, Maxime Biais <maxime@biais.org>
 # Copyright (C) 2016, Phil Song <songbohr@gmail.com>
 
-import public_markets
-import observers
-import config
+from . import public_markets
+from . import observers
+from . import config
+
 import time
 import logging
 import json
@@ -38,12 +39,12 @@ class Arbitrer(object):
         self.market_names = _markets
         for market_name in _markets:
             try:
-                exec('import public_markets.' + market_name.lower())
+                exec('from . import public_markets.' + market_name.lower())
                 market = eval('public_markets.' + market_name.lower() + '.' +
                               market_name + '()')
                 self.markets.append(market)
             except (ImportError, AttributeError) as e:
-                print("%s market name is invalid: Ignored (you should check your config file)" % (market_name))
+                print(("%s market name is invalid: Ignored (you should check your config file)" % (market_name)))
                 logging.warn("exception import:%s" % e)
                 traceback.print_exc()
     def init_observers(self, _observers):
@@ -57,7 +58,7 @@ class Arbitrer(object):
                                 observer_name + '()')
                 self.observers.append(observer)
             except (ImportError, AttributeError) as e:
-                print("%s observer name is invalid: Ignored (you should check your config file)" % (observer_name))
+                print(("%s observer name is invalid: Ignored (you should check your config file)" % (observer_name)))
                 print(e)
                 
     def get_profit_for(self, mi, mj, kask, kbid):

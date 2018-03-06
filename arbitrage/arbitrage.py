@@ -4,17 +4,18 @@
 import logging
 import argparse
 import sys
-import public_markets
+from . import public_markets
+
 import glob
 import os
 import inspect
-from arbitrer import Arbitrer
+from .arbitrage.arbitrer import Arbitrer
 from logging.handlers import RotatingFileHandler
-import lib.broker_api as exchange_api
-from observers.emailer import send_email
+from .lib import broker_api as exchange_api
+from .observers.emailer import send_email
 import datetime
 import time
-import config
+from . import config
 import traceback
 
 class ArbitrerCLI:
@@ -51,7 +52,7 @@ class ArbitrerCLI:
                 for name, obj in inspect.getmembers(test):
                     if inspect.isclass(obj) and 'Market' in (j.__name__ for j in obj.mro()[1:]):
                         if not obj.__module__.split('.')[-1].startswith('_'):
-                            print(obj.__name__)
+                            print((obj.__name__))
         sys.exit(0)
 
     def get_balance(self, args):

@@ -74,7 +74,7 @@ class BalanceDumper(Observer):
         except  Exception as ex:
             logging.warn("exception depths:%s" % ex)
             t,v,tb = sys.exc_info()
-            print(t,v)
+            print((t,v))
             traceback.print_exc()
 
             # logging.warn(depths)

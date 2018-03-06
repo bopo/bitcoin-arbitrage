@@ -23,8 +23,8 @@ class PrivateBrokerCNY(Market):
         self.currency = "CNY"
         self.get_info()
         self.client_id = 0
-
         self.filename = "broker-clientid.json"
+        
         try:
             self.load()
         except IOError:
@@ -42,7 +42,7 @@ class PrivateBrokerCNY(Market):
     def _buy(self, amount, price, client_id=None):
         """Create a buy limit order"""
         if not client_id:
-            self.client_id+=1
+            self.client_id += 1
             client_id = self.client_id
             self.save()
         

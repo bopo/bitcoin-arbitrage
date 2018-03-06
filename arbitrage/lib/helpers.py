@@ -4,7 +4,7 @@
 # import httplib
 import http.client as httplib
 import urllib.parse
-import urllib
+import urllib.request, urllib.parse, urllib.error
 import json
 import hashlib
 import time
@@ -93,7 +93,7 @@ def httpPost(url,resource,params):
 
 
 def signature(params):
-    params = sorted(params.items(), key=lambda d:d[0], reverse=False)
+    params = sorted(list(params.items()), key=lambda d:d[0], reverse=False)
     message = urllib.parse.urlencode(params)
     message = message.encode('utf-8')
 

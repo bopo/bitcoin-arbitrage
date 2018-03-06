@@ -24,4 +24,4 @@ class BitstampUSD(Market):
 
 if __name__ == "__main__":
     market = BitstampUSD()
-    print(market.get_ticker())
+    print((market.get_ticker()))
